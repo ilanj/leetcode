@@ -65,9 +65,9 @@ class Solution:
             l2Val = l2.val if l2 else 0
             columnSum = l1Val + l2Val + carry
             carry = columnSum // 10
-            newNode = ListNode(columnSum % 10)
-            curr.next = curr.next
-            curr = newNode
+            # newNode = ListNode(columnSum % 10)
+            curr.next = ListNode(columnSum % 10)
+            curr = curr.next
             l1 = l1.next if l1 else None
             l2 = l2.next if l2 else None
         return dummyHead.next
