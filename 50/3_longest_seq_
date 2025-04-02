@@ -1,0 +1,19 @@
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        charSet = set()  # Store unique characters
+        left = 0         # Left pointer
+        maxLength = 0    # Store max substring length
+
+        for right in range(len(s)):  # Move right pointer
+            while s[right] in charSet:
+                charSet.remove(s[left])  # Remove leftmost char
+                left += 1  # Shrink window
+            
+            charSet.add(s[right])  # Add new character
+            maxLength = max(maxLength, right - left + 1)  # Update max length
+        
+        return maxLength
+    
+# Example usage
+solution = Solution()
+print(solution.lengthOfLongestSubstring("abcabcbb"))  # Output: 3
