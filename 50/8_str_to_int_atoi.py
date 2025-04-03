@@ -102,18 +102,33 @@ class Solution:
             sign = 1
 
             # Step 1: Ignore leading whitespaces
-            while i < n and s[i] == ' ':
-                i += 1
+            # while i < n and s[i] == ' ':
+            #     i += 1
+            s = s.lstrip()
 
             # Step 2: Check if the next character is '-' or '+'
-            if i < n and (s[i] == '-' or s[i] == '+'):
-                sign = -1 if s[i] == '-' else 1
-                i += 1
+            # if i < n and (s[i] == '-' or s[i] == '+'):
+            # sign = -1 if s[0] == '-' else 1
+            if not s:
+                return 0
+
+            if s[0] == "-":
+                sign = -1 
+                s = s[1:]
+            elif s[0] == "+":
+                s = s[1:]
+                # i += 1
 
             # Step 3: Read the digits and convert to integer
-            while i < n and s[i].isdigit():
-                result = result * 10 + int(s[i])
-                i += 1
+            # while i < n and s[i].isdigit():
+            #     result = result * 10 + int(s[i])
+            #     i += 1
+
+            for ch in s:
+                 if ch.isdigit():
+                    result = result * 10 + int(ch)
+                 else:
+                    break
 
             # Apply sign to the result
             result *= sign
